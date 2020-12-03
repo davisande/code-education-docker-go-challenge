@@ -1,2 +1,2 @@
-# fullcycle-docker-go-challenge
+# code-education-go-challenge
 Full Cycle course - Docker challenge
