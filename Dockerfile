@@ -1,9 +1,14 @@
-FROM golang:1.15.5
+FROM golang:1.15.5 AS gobuilder
 
-WORKDIR /go/src/fullcycle
+WORKDIR /go/src/codeeducation
 
 COPY . .
 
 RUN GOOS=linux go build
 
-ENTRYPOINT [ "go" , "run", "HelloService.go" ]
+RUN go build HelloPrinter.go
+
+
+FROM scratch
+COPY --from=gobuilder /go/src/codeeducation/HelloPrinter .
+ENTRYPOINT [ "./HelloPrinter" ]
