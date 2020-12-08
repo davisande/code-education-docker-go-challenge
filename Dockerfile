@@ -6,7 +6,7 @@ COPY . .
 
 RUN GOOS=linux go build
 
-RUN go build HelloPrinter.go
+RUN go build -ldflags="-s -w" HelloPrinter.go
 
 
 FROM scratch
